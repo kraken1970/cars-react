@@ -1,11 +1,12 @@
 import React from "react";
 
-export default props => (
+export default ({ name, year, onChangeTitle, now }) => (
   <div>
-    <h3>Car name: {props.name}</h3>
+    <h3>Car name: {name}</h3>
     <p>
-      Year: <strong> {props.year}</strong>
+      Year: <strong> {year}</strong>
     </p>
-    <button onClick={props.onChangeTitle}>Click</button>
+    <button onClick={onChangeTitle}>Click</button>
+    {/* <p>{now}</p> */}
   </div>
 );
