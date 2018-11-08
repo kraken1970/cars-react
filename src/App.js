@@ -77,7 +77,14 @@ class App extends Component {
                 />
               );
             })} */}
-        {cars}
+        <div
+          style={{
+            margin: "10px auto",
+            paddingTop: "20px"
+          }}
+        >
+          {cars}
+        </div>
       </div>
     );
   }
