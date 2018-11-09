@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Car from "./Car/Car";
+import "./App.scss";
 
 class App extends Component {
   state = {
@@ -62,7 +63,9 @@ class App extends Component {
     return (
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
-        <button onClick={this.toggleCarsHandler}>Toggle cars</button>
+        <button onClick={this.toggleCarsHandler} className={"AppButton"}>
+          Toggle cars
+        </button>
         {/* {!this.state.showCars
           ? null
           : this.state.cars.map((car, index) => {

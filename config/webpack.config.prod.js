@@ -355,6 +355,14 @@ module.exports = {
             // See https://github.com/webpack/webpack/issues/6571
             sideEffects: true
           },
+          {
+            test: /\.scss$/,
+            use: [
+              require.resolve("style-loader"),
+              require.resolve("css-loader"),
+              require.resolve("sass-loader")
+            ]
+          },
           // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
           // using the extension .module.css
           {
