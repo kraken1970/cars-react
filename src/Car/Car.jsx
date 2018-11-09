@@ -1,12 +1,14 @@
 import React from "react";
 import Radium from "radium";
-import "./Car.css";
+import classes from "./Car.css";
 
 const Car = ({ name, year, onDelete, onChangeName }) => {
-  const inputClasses = ["input"];
-  name !== "" ? inputClasses.push("green") : inputClasses.push("red");
+  const inputClasses = [classes.input];
+  name !== ""
+    ? inputClasses.push(classes.green)
+    : inputClasses.push(classes.red);
   if (name.length > 4) {
-    inputClasses.push("bold");
+    inputClasses.push(classes.bold);
   }
 
   const style = {
@@ -20,7 +22,7 @@ const Car = ({ name, year, onDelete, onChangeName }) => {
   };
 
   return (
-    <div className="Car" style={style}>
+    <div className={classes.Car} style={style}>
       <h3>Car name: {name}</h3>
       <p>
         Year: <strong> {year}</strong>

@@ -11,6 +11,9 @@
   outline: none;
 }
 
+.input {
+}
+
 .input.green {
   border: 3px solid green;
 }
