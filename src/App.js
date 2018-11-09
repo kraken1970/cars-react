@@ -3,15 +3,20 @@ import Car from "./Car/Car";
 import "./App.scss";
 
 class App extends Component {
-  state = {
-    cars: [
-      { name: "Ford", year: 2018 },
-      { name: "Aydi", year: 2016 },
-      { name: "Mazda", year: 2010 }
-    ],
-    pageTitle: "React componenets",
-    showCars: false
-  };
+  constructor(props) {
+    // console.log("App constructor");
+
+    super(props);
+    this.state = {
+      cars: [
+        { name: "Ford", year: 2018 }
+        // { name: "Aydi", year: 2016 },
+        // { name: "Mazda", year: 2010 }
+      ],
+      pageTitle: "React componenets",
+      showCars: false
+    };
+  }
 
   handleDelete(index) {
     const cars = [...this.state.cars];
@@ -35,7 +40,16 @@ class App extends Component {
     });
   };
 
+  componentWillMount() {
+    console.log("App componentWillMount");
+  }
+
+  componentDidMount() {
+    console.log("App componentDidMount");
+  }
+
   render() {
+    console.log("App render");
     const divStyle = {
       textAlign: "center"
     };
@@ -62,7 +76,8 @@ class App extends Component {
 
     return (
       <div style={divStyle}>
-        <h1>{this.state.pageTitle}</h1>
+        {/* <h1>{this.state.pageTitle}</h1> */}
+        <h1>{this.props.title}</h1>
         <button onClick={this.toggleCarsHandler} className={"AppButton"}>
           Toggle cars
         </button>

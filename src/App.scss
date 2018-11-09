@@ -3,6 +3,7 @@
   border: 1px solid #ccc;
   font-weight: bold;
   text-transform: uppercase;
+  transition: all 0.3s;
   &:focus,
   &:active {
     outline: none;
