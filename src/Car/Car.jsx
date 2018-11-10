@@ -16,12 +16,29 @@ class Car extends React.Component {
     console.log("Car componentWillUpdate", nextProps, nextState);
   }
 
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   console.log("Car getDerivedStateFromProps", nextProps, prevState);
+  //   return prevState;
+  // }
+
   componentDidUpdate() {
     console.log("Car componentDidUpdate");
   }
 
+  // getSnapshotBeforeUpdate() {
+  //   console.log("Car getSnapshotBeforeUpdate");
+  //   return null;
+  // }
+
+  componentWillUnmount() {
+    console.log("Car componentWillUnmount");
+  }
+
   render() {
     console.log("Car render");
+    // if (Math.random() > 0.7) {
+    //   throw new Error("Car random failed");
+    // }
     const inputClasses = [classes.input];
     this.props.name !== ""
       ? inputClasses.push(classes.green)

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Car from "./Car/Car";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Counter from "./Counter/Counter";
 import "./App.scss";
 
 class App extends Component {
@@ -60,15 +62,16 @@ class App extends Component {
     if (this.state.showCars) {
       cars = this.state.cars.map((car, index) => {
         return (
-          <Car
-            key={index}
-            name={car.name}
-            year={car.year}
-            onChangeName={event => {
-              this.onChangeName(event.target.value, index);
-            }}
-            onDelete={this.handleDelete.bind(this, index)}
-          />
+          <ErrorBoundary key={index}>
+            <Car
+              name={car.name}
+              year={car.year}
+              onChangeName={event => {
+                this.onChangeName(event.target.value, index);
+              }}
+              onDelete={this.handleDelete.bind(this, index)}
+            />
+          </ErrorBoundary>
         );
       });
     }
@@ -78,6 +81,8 @@ class App extends Component {
       <div style={divStyle}>
         {/* <h1>{this.state.pageTitle}</h1> */}
         <h1>{this.props.title}</h1>
+        <Counter />
+        <br />
         <button onClick={this.toggleCarsHandler} className={"AppButton"}>
           Toggle cars
         </button>
