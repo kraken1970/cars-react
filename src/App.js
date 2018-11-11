@@ -4,16 +4,19 @@ import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import Counter from "./Counter/Counter";
 import "./App.scss";
 
+export const ClickedContext = React.createContext();
+
 class App extends Component {
   constructor(props) {
     // console.log("App constructor");
 
     super(props);
     this.state = {
+      clicked: false,
       cars: [
-        { name: "Ford", year: 2018 }
-        // { name: "Aydi", year: 2016 },
-        // { name: "Mazda", year: 2010 }
+        { name: "Ford", year: 2018 },
+        { name: "Aydi", year: 2016 },
+        { name: "Mazda", year: 2010 }
       ],
       pageTitle: "React componenets",
       showCars: false
@@ -42,16 +45,7 @@ class App extends Component {
     });
   };
 
-  componentWillMount() {
-    console.log("App componentWillMount");
-  }
-
-  componentDidMount() {
-    console.log("App componentDidMount");
-  }
-
   render() {
-    console.log("App render");
     const divStyle = {
       textAlign: "center"
     };
@@ -66,6 +60,7 @@ class App extends Component {
             <Car
               name={car.name}
               year={car.year}
+              index={index}
               onChangeName={event => {
                 this.onChangeName(event.target.value, index);
               }}
@@ -81,10 +76,17 @@ class App extends Component {
       <div style={divStyle}>
         {/* <h1>{this.state.pageTitle}</h1> */}
         <h1>{this.props.title}</h1>
-        <Counter />
+        <ClickedContext.Provider value={this.state.clicked}>
+          <Counter />
+        </ClickedContext.Provider>
+
         <br />
         <button onClick={this.toggleCarsHandler} className={"AppButton"}>
           Toggle cars
+        </button>
+        <br />
+        <button onClick={() => this.setState({ clicked: !this.state.clicked })}>
+          Changed clicked
         </button>
         {/* {!this.state.showCars
           ? null
